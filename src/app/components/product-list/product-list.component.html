@@ -1,0 +1,33 @@
+
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Liste des produits</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Libellé</th>
+            <th>Prix unitaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of data">
+            <td>{{p.code}}</td>
+            <td>{{p.libelle}}</td>
+            <td>{{p.prixUnitaire}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+
+
+
+
