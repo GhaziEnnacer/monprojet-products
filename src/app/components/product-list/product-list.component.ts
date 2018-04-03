@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../domain/product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -10,15 +11,11 @@ export class ProductListComponent implements OnInit {
 
   public data: Product[];
 
-  constructor() {
-    this.data = [{code: 'P100', libelle: 'café', prixUnitaire: 500.0},
-                 {code: 'P200', libelle: 'thé', prixUnitaire: 600.0},
-                 {code: 'P300', libelle: 'jus d\'orange', prixUnitaire: 700.0},
-                 {code: 'P400', libelle: 'coca-cola', prixUnitaire: 800.0},
-                 {code: 'P500', libelle: 'eau gazifiée', prixUnitaire: 600.0}];
+  constructor(private _service: ProductService) { // Déclarer une dépendance sur le service
   }
 
-  ngOnInit() {
+  ngOnInit() { // équivalent à @PostConstruct en Spring
+    this.data = this._service.getProduct();
   }
 
 }
