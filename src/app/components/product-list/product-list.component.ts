@@ -15,7 +15,9 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() { // équivalent à @PostConstruct en Spring
-    this.data = this._service.getProduct();
+    this._service.getProduct().subscribe(
+      result => { this.data = result; }
+    );
   }
 
 }

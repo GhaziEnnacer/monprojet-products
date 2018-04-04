@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../domain/product';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProductService {
 
-  constructor() { }
+  url = 'http://localhost:3000/products/';
 
-  public getProduct(): Product[] {
-    return [{code: 'P100', libelle: 'café', prixUnitaire: 500.0},
-            {code: 'P200', libelle: 'thé', prixUnitaire: 600.0},
-            {code: 'P300', libelle: 'jus d\'orange', prixUnitaire: 700.0},
-            {code: 'P400', libelle: 'coca-cola', prixUnitaire: 800.0},
-            {code: 'P500', libelle: 'eau gazifiée', prixUnitaire: 600.0}];
+  constructor(private http: HttpClient) { }
+
+  public getProduct(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.url);
   }
 }
